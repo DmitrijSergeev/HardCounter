@@ -1,9 +1,30 @@
-import React from 'react';
+import React, {FC} from 'react';
+import {Display} from "../display/Display";
+import {Button} from "../../button/Button";
+import {ButtonsName} from "../counter";
 
-export const Main = () => {
+type MainPropsType = {
+    minValue: number
+    maxValue: number
+    status: string
+    currentValue: number
+    incrementHandler: ()=> void
+}
+export const Main: FC<MainPropsType> = ({
+minValue,
+maxValue,
+status,
+currentValue,
+incrementHandler
+}) => {
     return (
-        <div>
-
-        </div>
-    );
-};
+        <>
+            <Display>
+                <span>{currentValue}</span>
+            </Display>
+            <Button name={ButtonsName.inc}
+                    onClick={incrementHandler}
+            />
+        </>
+    )
+}
